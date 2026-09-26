@@ -30,23 +30,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--nb-sans); color: var(--nb-text); }
 a { color: var(--nb-accent); }
 a:hover, a:focus { color: var(--nb-accent-hi); }
 
-.navbar-custom {
-  background: var(--nb-bg) !important;
-  border-bottom: 1px solid var(--nb-border);
-  font-family: var(--nb-mono);
-}
-.navbar-custom .navbar-brand,
-.navbar-custom .nav-link { color: var(--nb-text-2) !important; text-transform: lowercase; }
-.navbar-custom .nav-link:hover { color: var(--nb-accent) !important; }
-
-footer {
-  background: var(--nb-bg) !important;
-  border-top: 1px solid var(--nb-border);
-  font-family: var(--nb-mono);
-  font-size: 0.8rem;
-}
-footer, footer a, footer .text-muted { color: var(--nb-muted) !important; }
-footer a:hover { color: var(--nb-accent) !important; }
+/* Navbar and footer styles live in nanobyte-header.css (shared with the blog). */
 
 /* ---------- Homepage ---------- */
 
