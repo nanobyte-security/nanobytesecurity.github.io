@@ -1,3 +1,8 @@
+url: "https://nanobytesecurity.com"
+site-css:
+  - "/assets/css/nanobyte-header.css"
+  - "/assets/css/nanobyte.css"
+
 # ---------- SHARED HEADER / FOOTER (keep identical on both sites) ----------
 title: Nanobyte Security
 author: Alex Dalzell
