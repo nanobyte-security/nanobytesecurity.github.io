@@ -16,6 +16,8 @@ layout: base
     eyebrow:   Small green label above the heading (default: "// Nanobyte Security")
     wide:      true  -> 1120px content width instead of the 760px reading width
     cta:       false -> hide the "book a call" box at the bottom
+    sidebar:   file in _includes/ to show in a right-hand column,
+               e.g.  sidebar: contact-form.html
 {%- endcomment -%}
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
@@ -331,6 +333,182 @@ layout: base
     display: none !important;
   }
 
+  /* Link cards: <div class="nb-link-cards"><a class="nb-link-card">...</a></div> */
+  #nb-page .nb-link-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0 0 36px;
+  }
+
+  #nb-page .nbp-content a.nb-link-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: #0F1411;
+    border: 1px solid #1F2A22;
+    border-radius: 8px;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+
+  #nb-page .nbp-content a.nb-link-card:hover,
+  #nb-page .nbp-content a.nb-link-card:focus {
+    border-color: #4ADE80;
+  }
+
+  #nb-page .nb-link-card small {
+    display: block;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #7F9687;
+    margin-bottom: 2px;
+    line-height: 1.5;
+  }
+
+  #nb-page .nb-link-card span {
+    color: #E6EDE8;
+    font-size: 0.98rem;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  #nb-page .nb-link-card::after {
+    content: "→";
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: #4ADE80;
+  }
+
+  /* Small grey label heading: add {: .nb-label} on the line after a heading */
+  #nb-page .nbp-content .nb-label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #7F9687;
+    margin: 0 0 14px;
+    padding-top: 24px;
+    border-top: 1px solid #1F2A22;
+  }
+
+  /* Numbered steps: add {: .nb-steps} on the line after a numbered list */
+  #nb-page .nbp-content ol.nb-steps {
+    list-style: none;
+    counter-reset: nb-step;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #nb-page .nbp-content ol.nb-steps li {
+    counter-increment: nb-step;
+    display: flex;
+    gap: 12px;
+    margin: 0;
+    color: #A7B8AC;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  #nb-page .nbp-content ol.nb-steps li::before {
+    content: counter(nb-step, decimal-leading-zero);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: #4ADE80;
+    padding-top: 2px;
+  }
+
+  /* Form extras */
+  #nb-page .nb-form .nb-req {
+    color: #4ADE80;
+  }
+
+  #nb-page .nb-form .nb-submit-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  #nb-page .nb-form .nb-submit-row button[type="submit"] {
+    align-self: auto;
+  }
+
+  #nb-page .nb-form .nb-note {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: #7F9687;
+  }
+
+  /* Two-column pages: front matter `sidebar: some-file.html` */
+  #nb-page.has-sidebar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    column-gap: 64px;
+    align-items: start;
+  }
+
+  #nb-page.has-sidebar .nbp-hero {
+    margin-bottom: 32px;
+  }
+
+  #nb-page .nbp-sidebar {
+    position: sticky;
+    top: 24px;
+  }
+
+  #nb-page.has-sidebar .nbp-cta {
+    grid-column: 1 / -1;
+  }
+
+  /* Terminal-style card, used by sidebar includes */
+  #nb-page .nb-card {
+    background: #0F1411;
+    border: 1px solid #1F2A22;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  #nb-page .nb-card-bar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #1F2A22;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: #6F8577;
+  }
+
+  #nb-page .nb-card-bar span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2A3A30;
+  }
+
+  #nb-page .nb-card-bar em {
+    font-style: normal;
+    margin-left: 10px;
+  }
+
+  #nb-page .nb-card form.nb-form {
+    max-width: none;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
   /* Bottom call to action */
   #nb-page .nbp-cta {
     margin-top: 72px;
@@ -356,6 +534,23 @@ layout: base
     text-align: center;
   }
 
+  @media (max-width: 900px) {
+    #nb-page.has-sidebar {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 40px;
+    }
+
+    #nb-page .nbp-sidebar {
+      position: static;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #nb-page .nb-form .nb-submit-row button[type="submit"] {
+      width: 100%;
+    }
+  }
+
   @media (max-width: 768px) {
     #nb-page {
       padding-top: 64px;
@@ -367,7 +562,10 @@ layout: base
   }
 </style>
 
-<main id="nb-page"{% if page.wide %} class="is-wide"{% endif %}>
+{%- capture nbp_classes -%}{% if page.wide %}is-wide {% endif %}{% if page.sidebar %}has-sidebar{% endif %}{%- endcapture -%}
+<main id="nb-page"{% if nbp_classes != "" %} class="{{ nbp_classes | strip }}"{% endif %}>
+
+  <div class="nbp-main">
 
   <header class="nbp-hero">
     <div class="nbp-eyebrow">{{ page.eyebrow | default: "// Nanobyte Security" }}</div>
@@ -380,6 +578,14 @@ layout: base
   <article class="nbp-content">
     {{ content }}
   </article>
+
+  </div>
+
+  {% if page.sidebar %}
+    <aside class="nbp-sidebar">
+      {% include {{ page.sidebar }} %}
+    </aside>
+  {% endif %}
 
   {% unless page.cta == false %}
     <section class="nbp-cta">
