@@ -1,0 +1,53 @@
+{%- comment -%}
+  Contact form card for the right-hand column of the contact page.
+  Used by contact.md via front matter:  sidebar: contact-form.html
+  Web3Forms settings below are unchanged.
+{%- endcomment -%}
+<div class="nb-card">
+  <div class="nb-card-bar" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <em>new_message.txt</em>
+  </div>
+
+  <form class="nb-form" id="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="d3bee2f3-1516-44e3-b80d-f3c3e75bbf34">
+    <input type="hidden" name="subject" value="New Contact Form Submission from Web3Forms">
+    <input type="hidden" name="from_name" value="My Website">
+    <input type="hidden" name="redirect" value="https://nanobytesecurity.com/thanks">
+
+    <!-- Web3Forms spam honeypot: humans never see or tick this -->
+    <input type="checkbox" name="botcheck" class="nb-hidden" tabindex="-1" autocomplete="off">
+
+    <div>
+      <label for="name">Name <span class="nb-req" aria-hidden="true">*</span></label>
+      <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+    </div>
+
+    <div>
+      <label for="email">Email <span class="nb-req" aria-hidden="true">*</span></label>
+      <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+    </div>
+
+    <div>
+      <label for="message">Message <span class="nb-req" aria-hidden="true">*</span></label>
+      <textarea id="message" name="message" placeholder="What are you looking to test, and is there a deadline or requirement driving it?" required></textarea>
+    </div>
+
+    <div class="nb-submit-row">
+      <span class="nb-note">Your details stay private.</span>
+      <button type="submit">Send message</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Clear the form when the page loads (e.g. after using the back button)
+  window.addEventListener("load", function () {
+    var form = document.getElementById("form");
+    if (form) {
+      form.reset();
+    }
+  });
+</script>
