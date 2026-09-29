@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -93,53 +96,6 @@
 
       .nb-lead {
         max-width: 640px;
-      }
-
-      /* Navbar */
-      .nb-nav {
-        border-bottom: 1px solid var(--nb-border);
-      }
-
-      .nb-nav-inner {
-        max-width: 1120px;
-        margin: 0 auto;
-        padding: 20px 24px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 24px;
-        font-family: var(--nb-mono);
-      }
-
-      .nb-brand {
-        color: var(--nb-text);
-        font-weight: 700;
-      }
-
-      .nb-brand span {
-        color: var(--nb-accent);
-      }
-
-      .nb-nav-links {
-        display: flex;
-        gap: 28px;
-        align-items: center;
-        font-size: 0.85rem;
-      }
-
-      .nb-nav-links a {
-        color: var(--nb-text-2);
-      }
-
-      .nb-nav-links a:hover {
-        color: var(--nb-accent);
-      }
-
-      .nb-nav-links .nb-nav-cta {
-        color: var(--nb-accent);
-        border: 1px solid var(--nb-accent);
-        padding: 9px 14px;
-        border-radius: 6px;
       }
 
       /* Buttons */
@@ -600,10 +556,6 @@
           padding: 56px 0;
         }
 
-        .nb-nav-links a:not(.nb-nav-cta) {
-          display: none;
-        }
-
         .nb-reasons,
         .nb-steps,
         .nb-about {
@@ -618,22 +570,8 @@
   </head>
 
   <body>
-    <!--
-      Items in [BRACKETS] need your real details before publishing.
-      Delete any section you can't back up yet (e.g., testimonials) rather than leave placeholders live.
-    -->
-
-    <header class="nb-nav">
-      <div class="nb-nav-inner">
-        <a class="nb-brand" href="/">nanobyte<span>_</span>security</a>
-        <nav class="nb-nav-links">
-          <a href="#services">services</a>
-          <a href="#process">process</a>
-          <a href="https://blog.nanobytesecurity.com/">blog</a>
-          <a class="nb-nav-cta" href="https://calendly.com/alex-nanobytesecurity/30min">book a call</a>
-        </nav>
-      </div>
-    </header>
+    {%- comment -%} Shared header: edit _includes/nav.html to change it on every page {%- endcomment -%}
+    {% include nav.html %}
 
     <main class="nb">
 
@@ -816,7 +754,7 @@
           </details>
           <details>
             <summary>Is our data kept confidential?</summary>
-            <p>Yes. We sign an NDA, handle all findings securely, and [DESCRIBE DATA RETENTION].</p>
+            <p>Yes. We sign an NDA, handle all findings securely, and do not retain any reports after 30 days.</p>
           </details>
           <details>
             <summary>Will the report satisfy our auditor or insurer?</summary>
