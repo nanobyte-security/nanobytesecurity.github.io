@@ -1,21 +1,83 @@
-url: "https://nanobytesecurity.com"
-site-css:
-  - "/assets/css/nanobyte-header.css"
-  - "/assets/css/nanobyte.css"
+# ==========================================================
+# Nanobyte Security: main site (nanobytesecurity.com)
+# ==========================================================
 
-# ---------- SHARED HEADER / FOOTER (keep identical on both sites) ----------
 title: Nanobyte Security
-url: "https://blog.nanobytesecurity.com"
+author: Alex Dalzell
+description: Hands-on penetration testing and red team operations for small and mid-sized businesses.
+url: "https://nanobytesecurity.com"
+baseurl: ""
 url-pretty: "NanobyteSecurity.com"
+timezone: America/Chicago
 
+# Header comes from _includes/nav.html. This list is kept only as a fallback.
+navbar-links:
+  Services: "https://nanobytesecurity.com/#services"
+  Blog: "https://blog.nanobytesecurity.com/"
+  Contact: "https://nanobytesecurity.com/contact"
+
+# Styles loaded on every theme page
 site-css:
   - "/assets/css/nanobyte-header.css"
   - "/assets/css/nanobyte.css"
 
+# Theme colors (match the dark design)
+page-col: "#0A0D0B"
+text-col: "#E6EDE8"
+link-col: "#4ADE80"
+hover-col: "#86EFAC"
+navbar-col: "#0A0D0B"
+navbar-text-col: "#A7B8AC"
+navbar-border-col: "#1F2A22"
+footer-col: "#0A0D0B"
+footer-text-col: "#7F9687"
+footer-link-col: "#7F9687"
+footer-hover-col: "#4ADE80"
+
+# Footer
 social-network-links:
   email: "alex@nanobytesecurity.com"
   linkedin: alexander-dalzell
-
 remove-ads: true
 footer-hide-themename: true
-# ---------------------------------------------------------------------------
+
+# Content
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+permalink: /:year-:month-:day-:title/
+paginate: 5
+excerpt_length: 50
+
+# Default layouts: posts keep the theme's post layout; every other page
+# uses the Nanobyte page layout unless it sets its own `layout:`.
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      social-share: true
+  - scope:
+      path: ""
+    values:
+      layout: "nb-page"
+
+exclude:
+  - CHANGELOG.md
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - Appraisals
+  - beautiful-jekyll-theme.gemspec
+  - staticman.yml
+  - "_includes/nav.html.backup-avatar"
+  - vendor
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
