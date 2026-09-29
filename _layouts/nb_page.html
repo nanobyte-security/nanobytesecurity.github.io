@@ -1,0 +1,392 @@
+---
+layout: base
+---
+{%- comment -%}
+  Nanobyte Security default page layout
+  Save as: _layouts/nb-page.html (use the same file in both repos)
+
+  Any Markdown or HTML page that uses this layout gets:
+    - the shared header (_includes/nav.html, via "base")
+    - a left-aligned hero built from the page's front matter
+    - dark, readable styling for everything Markdown produces
+
+  Front matter it understands (all optional except title):
+    title:     Page heading
+    subtitle:  One or two sentences under the heading
+    eyebrow:   Small green label above the heading (default: "// Nanobyte Security")
+    wide:      true  -> 1120px content width instead of the 760px reading width
+    cta:       false -> hide the "book a call" box at the bottom
+{%- endcomment -%}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
+
+<style>
+  /* Page background (in case theme colors in _config.yml differ) */
+  body {
+    background: #0A0D0B;
+  }
+
+  #nb-page,
+  #nb-page * {
+    box-sizing: border-box;
+  }
+
+  #nb-page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 96px 24px 80px;
+    color: #E6EDE8;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    text-align: left;
+  }
+
+  /* Hero */
+  #nb-page .nbp-hero {
+    max-width: 760px;
+    margin-bottom: 56px;
+  }
+
+  #nb-page .nbp-eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4ADE80;
+    margin-bottom: 12px;
+  }
+
+  #nb-page .nbp-hero h1 {
+    font-size: 3rem;
+    line-height: 1.08;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #E6EDE8;
+    margin: 0 0 20px;
+  }
+
+  #nb-page .nbp-hero .nbp-subtitle {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: #A7B8AC;
+    margin: 0;
+  }
+
+  /* Markdown content */
+  #nb-page .nbp-content {
+    max-width: 760px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  #nb-page.is-wide .nbp-content {
+    max-width: none;
+  }
+
+  #nb-page .nbp-content > :first-child {
+    margin-top: 0;
+  }
+
+  #nb-page .nbp-content p,
+  #nb-page .nbp-content li {
+    color: #CDD8D0;
+    text-align: left;
+  }
+
+  #nb-page .nbp-content p {
+    margin: 0 0 20px;
+  }
+
+  #nb-page .nbp-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #E6EDE8;
+    margin: 48px 0 16px;
+    padding-top: 20px;
+    border-top: 1px solid #1F2A22;
+  }
+
+  #nb-page .nbp-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #E6EDE8;
+    margin: 36px 0 12px;
+  }
+
+  #nb-page .nbp-content h4 {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4ADE80;
+    margin: 32px 0 10px;
+  }
+
+  #nb-page .nbp-content a {
+    color: #4ADE80;
+    text-decoration: underline;
+    text-decoration-color: rgba(74, 222, 128, 0.4);
+    text-underline-offset: 3px;
+  }
+
+  #nb-page .nbp-content a:hover,
+  #nb-page .nbp-content a:focus {
+    color: #86EFAC;
+    text-decoration-color: #86EFAC;
+  }
+
+  #nb-page .nbp-content strong {
+    color: #E6EDE8;
+    font-weight: 600;
+  }
+
+  #nb-page .nbp-content ul,
+  #nb-page .nbp-content ol {
+    padding-left: 1.4em;
+    margin: 0 0 20px;
+  }
+
+  #nb-page .nbp-content li {
+    margin-bottom: 6px;
+  }
+
+  #nb-page .nbp-content ul li::marker {
+    color: #4ADE80;
+  }
+
+  #nb-page .nbp-content ol li::marker {
+    color: #4ADE80;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.9em;
+  }
+
+  #nb-page .nbp-content hr {
+    border: 0;
+    border-top: 1px solid #1F2A22;
+    margin: 40px 0;
+  }
+
+  #nb-page .nbp-content blockquote {
+    margin: 28px 0;
+    padding: 16px 24px;
+    background: #0F1411;
+    border: 1px solid #1F2A22;
+    border-radius: 8px;
+    color: #A7B8AC;
+  }
+
+  #nb-page .nbp-content blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  #nb-page .nbp-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #1F2A22;
+  }
+
+  #nb-page .nbp-content :not(pre) > code {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.88em;
+    background: #0F1411;
+    color: #86EFAC;
+    border: 1px solid #1F2A22;
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+
+  #nb-page .nbp-content pre {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    background: #070908;
+    color: #E6EDE8;
+    border: 1px solid #1F2A22;
+    border-radius: 10px;
+    padding: 20px 22px;
+    overflow-x: auto;
+    margin: 0 0 24px;
+  }
+
+  #nb-page .nbp-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 24px;
+    font-size: 0.95rem;
+  }
+
+  #nb-page .nbp-content th,
+  #nb-page .nbp-content td {
+    padding: 10px 14px;
+    border: 1px solid #1F2A22;
+    text-align: left;
+    color: #CDD8D0;
+  }
+
+  #nb-page .nbp-content th {
+    background: #0F1411;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #4ADE80;
+  }
+
+  /* Reusable button: write <a class="nb-button" href="...">Text</a> in Markdown */
+  #nb-page a.nb-button {
+    display: inline-block;
+    background: #4ADE80;
+    color: #06140B;
+    font-weight: 600;
+    padding: 14px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
+  #nb-page a.nb-button:hover,
+  #nb-page a.nb-button:focus {
+    background: #86EFAC;
+    color: #06140B;
+  }
+
+  /* Forms: write <form class="nb-form"> in Markdown */
+  #nb-page form.nb-form {
+    max-width: 640px;
+    margin: 8px 0 24px;
+    padding: 28px;
+    background: #0F1411;
+    border: 1px solid #1F2A22;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #nb-page .nb-form label {
+    display: block;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: #A7B8AC;
+    margin: 0 0 8px;
+  }
+
+  #nb-page .nb-form input[type="text"],
+  #nb-page .nb-form input[type="email"],
+  #nb-page .nb-form input[type="tel"],
+  #nb-page .nb-form select,
+  #nb-page .nb-form textarea {
+    width: 100%;
+    background: #0A0D0B;
+    color: #E6EDE8;
+    border: 1px solid #2A3A30;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  #nb-page .nb-form textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+
+  #nb-page .nb-form input::placeholder,
+  #nb-page .nb-form textarea::placeholder {
+    color: #5F7A69;
+  }
+
+  #nb-page .nb-form input:focus,
+  #nb-page .nb-form select:focus,
+  #nb-page .nb-form textarea:focus {
+    outline: none;
+    border-color: #4ADE80;
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.18);
+  }
+
+  #nb-page .nb-form button[type="submit"] {
+    align-self: flex-start;
+    background: #4ADE80;
+    color: #06140B;
+    border: 0;
+    border-radius: 6px;
+    padding: 14px 26px;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  #nb-page .nb-form button[type="submit"]:hover,
+  #nb-page .nb-form button[type="submit"]:focus {
+    background: #86EFAC;
+  }
+
+  #nb-page .nb-form .nb-hidden {
+    display: none !important;
+  }
+
+  /* Bottom call to action */
+  #nb-page .nbp-cta {
+    margin-top: 72px;
+    padding: 48px 32px;
+    background: #0F1411;
+    border: 1px solid #1F2A22;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  #nb-page .nbp-cta h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #E6EDE8;
+    margin: 0 0 12px;
+  }
+
+  #nb-page .nbp-cta p {
+    max-width: 520px;
+    margin: 0 auto 24px;
+    color: #A7B8AC;
+    line-height: 1.65;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    #nb-page {
+      padding-top: 64px;
+    }
+
+    #nb-page .nbp-hero h1 {
+      font-size: 2.3rem;
+    }
+  }
+</style>
+
+<main id="nb-page"{% if page.wide %} class="is-wide"{% endif %}>
+
+  <header class="nbp-hero">
+    <div class="nbp-eyebrow">{{ page.eyebrow | default: "// Nanobyte Security" }}</div>
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="nbp-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </header>
+
+  <article class="nbp-content">
+    {{ content }}
+  </article>
+
+  {% unless page.cta == false %}
+    <section class="nbp-cta">
+      <h2>Ready to find out where you stand?</h2>
+      <p>Book a free 30-minute scoping call. No sales pitch, just a straight conversation about your environment.</p>
+      <a class="nb-button" href="https://calendly.com/alex-nanobytesecurity/30min">Book a free scoping call</a>
+    </section>
+  {% endunless %}
+
+</main>
