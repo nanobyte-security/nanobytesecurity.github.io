@@ -495,37 +495,6 @@ layout: null
         color: var(--nb-muted);
       }
 
-      /* Footer */
-      .nb-footer {
-        border-top: 1px solid var(--nb-border);
-      }
-
-      .nb-footer-inner {
-        max-width: 1120px;
-        margin: 0 auto;
-        padding: 28px 24px;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 16px;
-        font-family: var(--nb-mono);
-        font-size: 0.8rem;
-        color: var(--nb-muted);
-      }
-
-      .nb-footer-inner nav {
-        display: flex;
-        gap: 20px;
-      }
-
-      .nb-footer-inner a {
-        color: var(--nb-muted);
-      }
-
-      .nb-footer-inner a:hover {
-        color: var(--nb-accent);
-      }
-
       /* Responsive */
       @media (max-width: 960px) {
         .nb-hero {
@@ -776,15 +745,6 @@ layout: null
 
     </main>
 
-    <footer class="nb-footer">
-      <div class="nb-footer-inner">
-        <span>© 2026 Nanobyte Security</span>
-        <nav>
-          <a href="https://linkedin.com/in/alexander-dalzell">linkedin</a>
-          <a href="https://blog.nanobytesecurity.com/">blog</a>
-          <a href="mailto:alex@nanobytesecurity.com">email</a>
-        </nav>
-      </div>
-    </footer>
+    {% include footer.html %}
   </body>
 </html>
